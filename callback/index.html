@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QuickBooks OAuth Callback</title>
+  <style>
+    body{font-family:Arial,sans-serif;max-width:840px;margin:48px auto;padding:0 20px;line-height:1.5;color:#172033}
+    code,textarea{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
+    textarea{width:100%;min-height:90px;margin:8px 0 20px;padding:12px;border:1px solid #ccd;border-radius:6px}
+    .box{background:#f6f8fa;border:1px solid #d8dee4;border-radius:8px;padding:16px;margin:16px 0}
+    .warn{background:#fff8c5;border-color:#eac54f}
+  </style>
+</head>
+<body>
+  <h1>QuickBooks OAuth Callback</h1>
+  <p>This page displays the authorization values returned by Intuit for the internal Personal AI Accountant application.</p>
+  <div class="box warn">
+    <strong>Do not share these values publicly.</strong> Copy them only into the local setup process.
+  </div>
+  <label>Authorization code</label>
+  <textarea id="code" readonly></textarea>
+  <label>Realm ID / Company ID</label>
+  <textarea id="realmId" readonly></textarea>
+  <label>Full callback URL</label>
+  <textarea id="fullUrl" readonly></textarea>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    document.getElementById("code").value = params.get("code") || "No code parameter found.";
+    document.getElementById("realmId").value = params.get("realmId") || params.get("realmID") || "No realmId parameter found.";
+    document.getElementById("fullUrl").value = window.location.href;
+  </script>
+</body>
+</html>
